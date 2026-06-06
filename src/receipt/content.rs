@@ -5,7 +5,8 @@ use std::fs::File;
 use std::io::Write;
 
 
-struct ReceiptContent {
+
+pub struct ReceiptContent {
     products: Vec<StoreProduct>,
     store: String,
 }
@@ -40,9 +41,10 @@ pub fn start_shopping() {
                 std::io::stdin().read_line(&mut product_input).expect("Failed to read line");
                 let product_input = product_input.trim();
                 match product_input {
-                    "1" => println!("Added {} to cart", PRODUCT_1_NAME),
-                    "2" => println!("Added {} to cart", PRODUCT_2_NAME),
-                    "3" => println!("Added {} to cart", PRODUCT_3_NAME),
+                    // This is from chatgpt becouse i couldnt figure out how to do it without hardcoding it.
+                    "1" => receipt_vektor.products.push(StoreProduct { name: products[0].name.clone(), price: products[0].price }),
+                    "2" => receipt_vektor.products.push(StoreProduct { name: products[1].name.clone(), price: products[1].price }),
+                    "3" => receipt_vektor.products.push(StoreProduct { name: products[2].name.clone(), price: products[2].price }),
                     _ => println!("Invalid product selection"),
                 }
             },
@@ -62,7 +64,7 @@ pub fn start_shopping() {
     }
     
 }
-fn complete_purchase(receipt: &ReceiptContent) -> Result<(), std::io::Error> {
+pub fn complete_purchase(receipt: &ReceiptContent) -> Result<(), std::io::Error> {
     let mut file = File::create("receipt.txt").expect("Could not create file");
     let mut total_price = 0;
     let mut product_count:HashMap<&StoreProduct, i32> = HashMap::new();
