@@ -59,7 +59,7 @@ pub fn start_shopping() {
                     }
             },
             "3" => {
-               complete_purchase(&receipt_vektor);
+               let _ = complete_purchase(&receipt_vektor);
                println!("Thank you for your purchase!");
                 break;
             },
