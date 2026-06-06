@@ -11,8 +11,11 @@ pub struct ReceiptContent {
     store: String,
 }
 
+#[allow(dead_code)]
 const PRODUCT_1_NAME: &str = "Xbox 720";
+#[allow(dead_code)]
 const PRODUCT_2_NAME: &str = "GPU - AND Random RT6600";
+#[allow(dead_code)]
 const PRODUCT_3_NAME: &str = "Potato";
 
 
@@ -32,7 +35,7 @@ pub fn start_shopping() {
         let input = input.trim(); 
         match input{
             "1" => {
-                println!("Which product would you like to add?'");
+                println!("Which product would you like to add?");
                 for i in 0..products.len() {
                     println!("{}) {} | Price - {}", i + 1, products[i].name, products[i].price);
                 }
@@ -48,7 +51,7 @@ pub fn start_shopping() {
                     _ => println!("Invalid product selection"),
                 }
             },
-            "2" => {println!("Removed most recent product from cart");
+            "2" => {
                     if !receipt_vektor.products.is_empty() {
                         receipt_vektor.products.pop();
                     } else {
@@ -57,6 +60,7 @@ pub fn start_shopping() {
             },
             "3" => {
                complete_purchase(&receipt_vektor);
+               println!("Thank you for your purchase!");
                 break;
             },
             _ => println!("Invalid input, please try again"),
