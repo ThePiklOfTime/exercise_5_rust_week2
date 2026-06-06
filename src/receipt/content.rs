@@ -86,9 +86,8 @@ pub fn complete_purchase(receipt: &ReceiptContent) -> Result<(), std::io::Error>
         total_price += product.price * *count;
     }
     writeln!(file, "------------------------------").expect("writing to file failed");
-    writeln!(file, "Final Price: {}€", total_price).expect("writing to file failed");
+    writeln!(file, "Final price: {}€", total_price).expect("writing to file failed");
     writeln!(file, "------------------------------").expect("writing to file failed");
     Ok(())
 }
-
 
