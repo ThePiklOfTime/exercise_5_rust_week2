@@ -7,8 +7,8 @@ use std::io::Write;
 
 
 pub struct ReceiptContent {
-    products: Vec<StoreProduct>,
-    store: String,
+    pub products: Vec<StoreProduct>,
+    pub store: String,
 }
 
 #[allow(dead_code)]
